@@ -48,6 +48,6 @@ app.get("/quiz",async(req,res)=>{
 
 
 app.listen(PORT,async()=>{
-    await mongoose.connect("mongodb+srv://dd:dd@cluster0.zsszidp.mongodb.net/quiz")
+    await mongoose.connect("mongodb+srv://deepakahlawat10:deepakahlawat10@cluster0.qkndiwa.mongodb.net/?retryWrites=true&w=majority")
     console.log("Started on 8000")
 })
