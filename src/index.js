@@ -5,6 +5,7 @@ const express =  require("express")
 const cors = require("cors");
 const mongoose = require("mongoose");
 const QuizModel = require("../model/QuizModel")
+const PORT = process.env.PORT || 8000
 
 const App = express()
 
@@ -44,7 +45,7 @@ App.get("/quiz",async(req,res)=>{
 })
 
 
-App.listen(8000,async()=>{
+App.listen(PORT,async()=>{
     await mongoose.connect("mongodb+srv://dd:dd@cluster0.zsszidp.mongodb.net/quiz")
     console.log("Started on 8000")
 })
