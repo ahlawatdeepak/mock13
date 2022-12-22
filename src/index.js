@@ -5,20 +5,22 @@ const express =  require("express")
 const cors = require("cors");
 const mongoose = require("mongoose");
 const QuizModel = require("../model/QuizModel")
+const req = require("express/lib/request")
 const PORT = process.env.PORT || 8000
+mongoose.set('strictQuery', true)
 
-const App = express()
+const app = express()
 
-App.use(cors());
-App.use(express.json())
+app.use(cors());
+app.use(express.json())
 
 
-App.get("/",async(req,res)=>{
+app.get("/",async(req,res)=>{
     res.send("Home")
 })
 
 
-// App.post("/create", async(req,res)=>{
+// app.post("/create", async(req,res)=>{
 //     console.log(req.body)
 //     try {
 //         let data = await QuizModel.create(req.body)
@@ -29,7 +31,7 @@ App.get("/",async(req,res)=>{
 //     }
 // })
 
-App.get("/quiz",async(req,res)=>{
+app.get("/quiz",async(req,res)=>{
     const {amount,category,difficulty} = req.query
     let temp = {}
     if(category)temp = {...temp,category}
@@ -45,7 +47,7 @@ App.get("/quiz",async(req,res)=>{
 })
 
 
-App.listen(PORT,async()=>{
+app.listen(PORT,async()=>{
     await mongoose.connect("mongodb+srv://dd:dd@cluster0.zsszidp.mongodb.net/quiz")
     console.log("Started on 8000")
 })
